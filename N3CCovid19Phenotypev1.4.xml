@@ -1,0 +1,1301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation translatorOptions="" xsi:type="a:CqlToElmInfo"/>
+   <annotation message="List-valued expression was demoted to a singleton." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation message="List-valued expression was demoted to a singleton." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation libraryId="N3CCovid19Phenotype" libraryVersion="1.4" startLine="326" startChar="12" endLine="327" endChar="63" message="Boolean-valued expression was promoted to a list." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <identifier id="N3CCovid19Phenotype" version="1.4"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QUICK" uri="http://hl7.org/fhir"/>
+   </usings>
+   <parameters>
+      <def name="IndexDate" accessLevel="Public">
+         <parameterTypeSpecifier name="t:Date" xsi:type="NamedTypeSpecifier"/>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="ActCodes" id="http://hl7.org/fhir/v3/ActCode" accessLevel="Public"/>
+      <def name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+      <def name="ICD-10" id="http://hl7.org/fhir/sid/icd-10" accessLevel="Public"/>
+      <def name="SNOMEDCT" id="http://snomed.info/sct" accessLevel="Public"/>
+      <def name="HCPCS" id="https://www.cms.gov/Medicare/Coding/HCPCS" accessLevel="Public"/>
+      <def name="CPT4" id="http://www.ama-assn.org/go/cpt " accessLevel="Public"/>
+   </codeSystems>
+   <codes>
+      <def name="Inpatient Encounter" id="IMP" accessLevel="Public">
+         <codeSystem name="ActCodes"/>
+      </def>
+      <def name="Outpatient Encounter" id="AMB" accessLevel="Public">
+         <codeSystem name="ActCodes"/>
+      </def>
+      <def name="94307-6" id="94307-6" display="94307-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94308-4" id="94308-4" display="94308-4" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94309-2" id="94309-2" display="94309-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94310-0" id="94310-0" display="94310-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94311-8" id="94311-8" display="94311-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94312-6" id="94312-6" display="94312-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94313-4" id="94313-4" display="94313-4" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94314-2" id="94314-2" display="94314-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94315-9" id="94315-9" display="94315-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94316-7" id="94316-7" display="94316-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94500-6" id="94500-6" display="94500-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94502-2" id="94502-2" display="94502-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94505-5" id="94505-5" display="94505-5" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94506-3" id="94506-3" display="94506-3" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94507-1" id="94507-1" display="94507-1" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94508-9" id="94508-9" display="94508-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94509-7" id="94509-7" display="94509-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94510-5" id="94510-5" display="94510-5" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94511-3" id="94511-3" display="94511-3" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94532-9" id="94532-9" display="94532-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94533-7" id="94533-7" display="94533-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94534-5" id="94534-5" display="94534-5" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94547-7" id="94547-7" display="94547-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94558-4" id="94558-4" display="94558-4" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94559-2" id="94559-2" display="94559-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94562-6" id="94562-6" display="94562-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94563-4" id="94563-4" display="94563-4" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94564-2" id="94564-2" display="94564-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94565-9" id="94565-9" display="94565-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94639-2" id="94639-2" display="94639-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94640-0" id="94640-0" display="94640-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94641-8" id="94641-8" display="94641-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94642-6" id="94642-6" display="94642-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94643-4" id="94643-4" display="94643-4" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94644-2" id="94644-2" display="94644-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94645-9" id="94645-9" display="94645-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94646-7" id="94646-7" display="94646-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94647-5" id="94647-5" display="94647-5" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94660-8" id="94660-8" display="94660-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94661-6" id="94661-6" display="94661-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94306-8" id="94306-8" display="94306-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94503-0" id="94503-0" display="94503-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94504-8" id="94504-8" display="94504-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94531-1" id="94531-1" display="94531-1" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94720-0" id="94720-0" display="94720-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94758-0" id="94758-0" display="94758-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94759-8" id="94759-8" display="94759-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94760-6" id="94760-6" display="94760-6" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94762-2" id="94762-2" display="94762-2" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94763-0" id="94763-0" display="94763-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94764-8" id="94764-8" display="94764-8" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94765-5" id="94765-5" display="94765-5" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94766-3" id="94766-3" display="94766-3" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94767-1" id="94767-1" display="94767-1" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94768-9" id="94768-9" display="94768-9" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94769-7" id="94769-7" display="94769-7" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="94819-0" id="94819-0" display="94819-0" accessLevel="Public">
+         <codeSystem name="LOINC"/>
+      </def>
+      <def name="U0001" id="U0001" display="U0001" accessLevel="Public">
+         <codeSystem name="HCPCS"/>
+      </def>
+      <def name="U0002" id="U0002" display="U0002" accessLevel="Public">
+         <codeSystem name="HCPCS"/>
+      </def>
+      <def name="87635" id="87635" display="87635" accessLevel="Public">
+         <codeSystem name="CPT4"/>
+      </def>
+      <def name="86318" id="86318" display="86318" accessLevel="Public">
+         <codeSystem name="CPT4"/>
+      </def>
+      <def name="86328" id="86328" display="86328" accessLevel="Public">
+         <codeSystem name="CPT4"/>
+      </def>
+      <def name="86769" id="86769" display="86769" accessLevel="Public">
+         <codeSystem name="CPT4"/>
+      </def>
+      <def name="B97.21" id="B97.21" display="B97.21" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="B97.29" id="B97.29" display="B97.29" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="U07.1" id="U07.1" display="U07.1" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="840539006" id="840539006" display="840539006" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="840544004" id="840544004" display="840544004" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="Z20.828" id="Z20.828" display="Z20.828" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="B34.2" id="B34.2" display="B34.2" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R50%" id="R50%" display="R50%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R05%" id="R05%" display="R05%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R06.0%" id="R06.0%" display="R06.0%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J12%" id="J12%" display="J12%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J18%" id="J18%" display="J18%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J20%" id="J20%" display="J20%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J40%" id="J40%" display="J40%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J21%" id="J21%" display="J21%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J96%" id="J96%" display="J96%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J22%" id="J22%" display="J22%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J06.9" id="J06.9" display="J06.9" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J98.8" id="J98.8" display="J98.8" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="J80%" id="J80%" display="J80%" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R43.0" id="R43.0" display="R43.0" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R43.2" id="R43.2" display="R43.2" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R07.1" id="R07.1" display="R07.1" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="R68.83" id="R68.83" display="R68.83" accessLevel="Public">
+         <codeSystem name="ICD-10"/>
+      </def>
+      <def name="840546002" id="840546002" display="840546002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="103001002" id="103001002" display="103001002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="11833005" id="11833005" display="11833005" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="267036007" id="267036007" display="267036007" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="28743005" id="28743005" display="28743005" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="36955009" id="36955009" display="36955009" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="426000000" id="426000000" display="426000000" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="44169009" id="44169009" display="44169009" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="49727002" id="49727002" display="49727002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="135883003" id="135883003" display="135883003" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="161855003" id="161855003" display="161855003" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="161939006" id="161939006" display="161939006" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="161940008" id="161940008" display="161940008" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="161941007" id="161941007" display="161941007" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="2237002" id="2237002" display="2237002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="23141003" id="23141003" display="23141003" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="247410004" id="247410004" display="247410004" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="274640006" id="274640006" display="274640006" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="274664007" id="274664007" display="274664007" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="284523002" id="284523002" display="284523002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="386661006" id="386661006" display="386661006" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="409702008" id="409702008" display="409702008" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="426976009" id="426976009" display="426976009" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="43724002" id="43724002" display="43724002" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="60845006" id="60845006" display="60845006" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+      <def name="75483001" id="75483001" display="75483001" accessLevel="Public">
+         <codeSystem name="SNOMEDCT"/>
+      </def>
+   </codes>
+   <statements>
+      <def name="N3C Lab Tests Concept Union" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Union">
+                              <operand xsi:type="Union">
+                                 <operand xsi:type="Union">
+                                    <operand xsi:type="Union">
+                                       <operand xsi:type="Union">
+                                          <operand xsi:type="Union">
+                                             <operand xsi:type="Union">
+                                                <operand xsi:type="Union">
+                                                   <operand xsi:type="Union">
+                                                      <operand xsi:type="Union">
+                                                         <operand xsi:type="Union">
+                                                            <operand xsi:type="Union">
+                                                               <operand xsi:type="Union">
+                                                                  <operand xsi:type="Union">
+                                                                     <operand xsi:type="Union">
+                                                                        <operand xsi:type="Union">
+                                                                           <operand xsi:type="Union">
+                                                                              <operand xsi:type="Union">
+                                                                                 <operand xsi:type="Union">
+                                                                                    <operand xsi:type="Union">
+                                                                                       <operand xsi:type="Union">
+                                                                                          <operand xsi:type="Union">
+                                                                                             <operand xsi:type="Union">
+                                                                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                   <codes xsi:type="ToList">
+                                                                                                      <operand name="94307-6" xsi:type="CodeRef"/>
+                                                                                                   </codes>
+                                                                                                </operand>
+                                                                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                   <codes xsi:type="ToList">
+                                                                                                      <operand name="94308-4" xsi:type="CodeRef"/>
+                                                                                                   </codes>
+                                                                                                </operand>
+                                                                                             </operand>
+                                                                                             <operand xsi:type="Union">
+                                                                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                   <codes xsi:type="ToList">
+                                                                                                      <operand name="94309-2" xsi:type="CodeRef"/>
+                                                                                                   </codes>
+                                                                                                </operand>
+                                                                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                   <codes xsi:type="ToList">
+                                                                                                      <operand name="94310-0" xsi:type="CodeRef"/>
+                                                                                                   </codes>
+                                                                                                </operand>
+                                                                                             </operand>
+                                                                                          </operand>
+                                                                                          <operand xsi:type="Union">
+                                                                                             <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                <codes xsi:type="ToList">
+                                                                                                   <operand name="94311-8" xsi:type="CodeRef"/>
+                                                                                                </codes>
+                                                                                             </operand>
+                                                                                             <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                                <codes xsi:type="ToList">
+                                                                                                   <operand name="94312-6" xsi:type="CodeRef"/>
+                                                                                                </codes>
+                                                                                             </operand>
+                                                                                          </operand>
+                                                                                       </operand>
+                                                                                       <operand xsi:type="Union">
+                                                                                          <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                             <codes xsi:type="ToList">
+                                                                                                <operand name="94313-4" xsi:type="CodeRef"/>
+                                                                                             </codes>
+                                                                                          </operand>
+                                                                                          <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                             <codes xsi:type="ToList">
+                                                                                                <operand name="94314-2" xsi:type="CodeRef"/>
+                                                                                             </codes>
+                                                                                          </operand>
+                                                                                       </operand>
+                                                                                    </operand>
+                                                                                    <operand xsi:type="Union">
+                                                                                       <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                          <codes xsi:type="ToList">
+                                                                                             <operand name="94315-9" xsi:type="CodeRef"/>
+                                                                                          </codes>
+                                                                                       </operand>
+                                                                                       <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                          <codes xsi:type="ToList">
+                                                                                             <operand name="94316-7" xsi:type="CodeRef"/>
+                                                                                          </codes>
+                                                                                       </operand>
+                                                                                    </operand>
+                                                                                 </operand>
+                                                                                 <operand xsi:type="Union">
+                                                                                    <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                       <codes xsi:type="ToList">
+                                                                                          <operand name="94500-6" xsi:type="CodeRef"/>
+                                                                                       </codes>
+                                                                                    </operand>
+                                                                                    <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                       <codes xsi:type="ToList">
+                                                                                          <operand name="94502-2" xsi:type="CodeRef"/>
+                                                                                       </codes>
+                                                                                    </operand>
+                                                                                 </operand>
+                                                                              </operand>
+                                                                              <operand xsi:type="Union">
+                                                                                 <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                    <codes xsi:type="ToList">
+                                                                                       <operand name="94505-5" xsi:type="CodeRef"/>
+                                                                                    </codes>
+                                                                                 </operand>
+                                                                                 <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                    <codes xsi:type="ToList">
+                                                                                       <operand name="94506-3" xsi:type="CodeRef"/>
+                                                                                    </codes>
+                                                                                 </operand>
+                                                                              </operand>
+                                                                           </operand>
+                                                                           <operand xsi:type="Union">
+                                                                              <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="94507-1" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                              <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="94508-9" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                           </operand>
+                                                                        </operand>
+                                                                        <operand xsi:type="Union">
+                                                                           <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                              <codes xsi:type="ToList">
+                                                                                 <operand name="94509-7" xsi:type="CodeRef"/>
+                                                                              </codes>
+                                                                           </operand>
+                                                                           <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                              <codes xsi:type="ToList">
+                                                                                 <operand name="94510-5" xsi:type="CodeRef"/>
+                                                                              </codes>
+                                                                           </operand>
+                                                                        </operand>
+                                                                     </operand>
+                                                                     <operand xsi:type="Union">
+                                                                        <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                           <codes xsi:type="ToList">
+                                                                              <operand name="94511-3" xsi:type="CodeRef"/>
+                                                                           </codes>
+                                                                        </operand>
+                                                                        <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                           <codes xsi:type="ToList">
+                                                                              <operand name="94532-9" xsi:type="CodeRef"/>
+                                                                           </codes>
+                                                                        </operand>
+                                                                     </operand>
+                                                                  </operand>
+                                                                  <operand xsi:type="Union">
+                                                                     <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                        <codes xsi:type="ToList">
+                                                                           <operand name="94533-7" xsi:type="CodeRef"/>
+                                                                        </codes>
+                                                                     </operand>
+                                                                     <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                        <codes xsi:type="ToList">
+                                                                           <operand name="94534-5" xsi:type="CodeRef"/>
+                                                                        </codes>
+                                                                     </operand>
+                                                                  </operand>
+                                                               </operand>
+                                                               <operand xsi:type="Union">
+                                                                  <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                     <codes xsi:type="ToList">
+                                                                        <operand name="94547-7" xsi:type="CodeRef"/>
+                                                                     </codes>
+                                                                  </operand>
+                                                                  <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                     <codes xsi:type="ToList">
+                                                                        <operand name="94558-4" xsi:type="CodeRef"/>
+                                                                     </codes>
+                                                                  </operand>
+                                                               </operand>
+                                                            </operand>
+                                                            <operand xsi:type="Union">
+                                                               <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                  <codes xsi:type="ToList">
+                                                                     <operand name="94559-2" xsi:type="CodeRef"/>
+                                                                  </codes>
+                                                               </operand>
+                                                               <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                                  <codes xsi:type="ToList">
+                                                                     <operand name="94562-6" xsi:type="CodeRef"/>
+                                                                  </codes>
+                                                               </operand>
+                                                            </operand>
+                                                         </operand>
+                                                         <operand xsi:type="Union">
+                                                            <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                               <codes xsi:type="ToList">
+                                                                  <operand name="94563-4" xsi:type="CodeRef"/>
+                                                               </codes>
+                                                            </operand>
+                                                            <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                               <codes xsi:type="ToList">
+                                                                  <operand name="94564-2" xsi:type="CodeRef"/>
+                                                               </codes>
+                                                            </operand>
+                                                         </operand>
+                                                      </operand>
+                                                      <operand xsi:type="Union">
+                                                         <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                            <codes xsi:type="ToList">
+                                                               <operand name="94565-9" xsi:type="CodeRef"/>
+                                                            </codes>
+                                                         </operand>
+                                                         <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                            <codes xsi:type="ToList">
+                                                               <operand name="94639-2" xsi:type="CodeRef"/>
+                                                            </codes>
+                                                         </operand>
+                                                      </operand>
+                                                   </operand>
+                                                   <operand xsi:type="Union">
+                                                      <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                         <codes xsi:type="ToList">
+                                                            <operand name="94640-0" xsi:type="CodeRef"/>
+                                                         </codes>
+                                                      </operand>
+                                                      <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                         <codes xsi:type="ToList">
+                                                            <operand name="94641-8" xsi:type="CodeRef"/>
+                                                         </codes>
+                                                      </operand>
+                                                   </operand>
+                                                </operand>
+                                                <operand xsi:type="Union">
+                                                   <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                      <codes xsi:type="ToList">
+                                                         <operand name="94642-6" xsi:type="CodeRef"/>
+                                                      </codes>
+                                                   </operand>
+                                                   <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                      <codes xsi:type="ToList">
+                                                         <operand name="94643-4" xsi:type="CodeRef"/>
+                                                      </codes>
+                                                   </operand>
+                                                </operand>
+                                             </operand>
+                                             <operand xsi:type="Union">
+                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                   <codes xsi:type="ToList">
+                                                      <operand name="94644-2" xsi:type="CodeRef"/>
+                                                   </codes>
+                                                </operand>
+                                                <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                   <codes xsi:type="ToList">
+                                                      <operand name="94645-9" xsi:type="CodeRef"/>
+                                                   </codes>
+                                                </operand>
+                                             </operand>
+                                          </operand>
+                                          <operand xsi:type="Union">
+                                             <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="94646-7" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                             <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="94647-5" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                          </operand>
+                                       </operand>
+                                       <operand xsi:type="Union">
+                                          <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                             <codes xsi:type="ToList">
+                                                <operand name="94660-8" xsi:type="CodeRef"/>
+                                             </codes>
+                                          </operand>
+                                          <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                             <codes xsi:type="ToList">
+                                                <operand name="94661-6" xsi:type="CodeRef"/>
+                                             </codes>
+                                          </operand>
+                                       </operand>
+                                    </operand>
+                                    <operand xsi:type="Union">
+                                       <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                          <codes xsi:type="ToList">
+                                             <operand name="94306-8" xsi:type="CodeRef"/>
+                                          </codes>
+                                       </operand>
+                                       <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                          <codes xsi:type="ToList">
+                                             <operand name="94503-0" xsi:type="CodeRef"/>
+                                          </codes>
+                                       </operand>
+                                    </operand>
+                                 </operand>
+                                 <operand xsi:type="Union">
+                                    <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                       <codes xsi:type="ToList">
+                                          <operand name="94504-8" xsi:type="CodeRef"/>
+                                       </codes>
+                                    </operand>
+                                    <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                       <codes xsi:type="ToList">
+                                          <operand name="94531-1" xsi:type="CodeRef"/>
+                                       </codes>
+                                    </operand>
+                                 </operand>
+                              </operand>
+                              <operand xsi:type="Union">
+                                 <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                    <codes xsi:type="ToList">
+                                       <operand name="94720-0" xsi:type="CodeRef"/>
+                                    </codes>
+                                 </operand>
+                                 <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                    <codes xsi:type="ToList">
+                                       <operand name="94758-0" xsi:type="CodeRef"/>
+                                    </codes>
+                                 </operand>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="Union">
+                              <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                 <codes xsi:type="ToList">
+                                    <operand name="94759-8" xsi:type="CodeRef"/>
+                                 </codes>
+                              </operand>
+                              <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                                 <codes xsi:type="ToList">
+                                    <operand name="94760-6" xsi:type="CodeRef"/>
+                                 </codes>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Union">
+                           <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                              <codes xsi:type="ToList">
+                                 <operand name="94762-2" xsi:type="CodeRef"/>
+                              </codes>
+                           </operand>
+                           <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                              <codes xsi:type="ToList">
+                                 <operand name="94763-0" xsi:type="CodeRef"/>
+                              </codes>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Union">
+                        <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                           <codes xsi:type="ToList">
+                              <operand name="94764-8" xsi:type="CodeRef"/>
+                           </codes>
+                        </operand>
+                        <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                           <codes xsi:type="ToList">
+                              <operand name="94765-5" xsi:type="CodeRef"/>
+                           </codes>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand xsi:type="Union">
+                     <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                        <codes xsi:type="ToList">
+                           <operand name="94766-3" xsi:type="CodeRef"/>
+                        </codes>
+                     </operand>
+                     <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                        <codes xsi:type="ToList">
+                           <operand name="94767-1" xsi:type="CodeRef"/>
+                        </codes>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="94768-9" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="94769-7" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+            </operand>
+            <operand dataType="fhir:DiagnosticReport" templateId="diagnosticreport-qicore-qicore-diagnosticreport" codeProperty="name" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="94819-0" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def name="N3C Procedure Code Union" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="U0001" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="U0002" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="87635" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="86318" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+            </operand>
+            <operand xsi:type="Union">
+               <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand name="86328" xsi:type="CodeRef"/>
+                  </codes>
+               </operand>
+               <operand dataType="fhir:Procedure" templateId="procedure-qicore-qicore-procedure" codeProperty="type" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand name="86769" xsi:type="CodeRef"/>
+                  </codes>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="N3C Strong Postive Condition Code Union" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="B97.21" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="B97.29" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="U07.1" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="840539006" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+            </operand>
+            <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="840544004" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def name="N3C Weak Positive Condition Code Union" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Union">
+                              <operand xsi:type="Union">
+                                 <operand xsi:type="Union">
+                                    <operand xsi:type="Union">
+                                       <operand xsi:type="Union">
+                                          <operand xsi:type="Union">
+                                             <operand xsi:type="Union">
+                                                <operand xsi:type="Union">
+                                                   <operand xsi:type="Union">
+                                                      <operand xsi:type="Union">
+                                                         <operand xsi:type="Union">
+                                                            <operand xsi:type="Union">
+                                                               <operand xsi:type="Union">
+                                                                  <operand xsi:type="Union">
+                                                                     <operand xsi:type="Union">
+                                                                        <operand xsi:type="Union">
+                                                                           <operand xsi:type="Union">
+                                                                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="Z20.828" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="B34.2" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                           </operand>
+                                                                           <operand xsi:type="Union">
+                                                                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="R50%" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                                 <codes xsi:type="ToList">
+                                                                                    <operand name="R05%" xsi:type="CodeRef"/>
+                                                                                 </codes>
+                                                                              </operand>
+                                                                           </operand>
+                                                                        </operand>
+                                                                        <operand xsi:type="Union">
+                                                                           <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                              <codes xsi:type="ToList">
+                                                                                 <operand name="R06.0%" xsi:type="CodeRef"/>
+                                                                              </codes>
+                                                                           </operand>
+                                                                           <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                              <codes xsi:type="ToList">
+                                                                                 <operand name="J12%" xsi:type="CodeRef"/>
+                                                                              </codes>
+                                                                           </operand>
+                                                                        </operand>
+                                                                     </operand>
+                                                                     <operand xsi:type="Union">
+                                                                        <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                           <codes xsi:type="ToList">
+                                                                              <operand name="J18%" xsi:type="CodeRef"/>
+                                                                           </codes>
+                                                                        </operand>
+                                                                        <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                           <codes xsi:type="ToList">
+                                                                              <operand name="J20%" xsi:type="CodeRef"/>
+                                                                           </codes>
+                                                                        </operand>
+                                                                     </operand>
+                                                                  </operand>
+                                                                  <operand xsi:type="Union">
+                                                                     <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                        <codes xsi:type="ToList">
+                                                                           <operand name="J40%" xsi:type="CodeRef"/>
+                                                                        </codes>
+                                                                     </operand>
+                                                                     <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                        <codes xsi:type="ToList">
+                                                                           <operand name="J21%" xsi:type="CodeRef"/>
+                                                                        </codes>
+                                                                     </operand>
+                                                                  </operand>
+                                                               </operand>
+                                                               <operand xsi:type="Union">
+                                                                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                     <codes xsi:type="ToList">
+                                                                        <operand name="J96%" xsi:type="CodeRef"/>
+                                                                     </codes>
+                                                                  </operand>
+                                                                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                     <codes xsi:type="ToList">
+                                                                        <operand name="J22%" xsi:type="CodeRef"/>
+                                                                     </codes>
+                                                                  </operand>
+                                                               </operand>
+                                                            </operand>
+                                                            <operand xsi:type="Union">
+                                                               <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                  <codes xsi:type="ToList">
+                                                                     <operand name="J06.9" xsi:type="CodeRef"/>
+                                                                  </codes>
+                                                               </operand>
+                                                               <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                                  <codes xsi:type="ToList">
+                                                                     <operand name="J98.8" xsi:type="CodeRef"/>
+                                                                  </codes>
+                                                               </operand>
+                                                            </operand>
+                                                         </operand>
+                                                         <operand xsi:type="Union">
+                                                            <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                               <codes xsi:type="ToList">
+                                                                  <operand name="J80%" xsi:type="CodeRef"/>
+                                                               </codes>
+                                                            </operand>
+                                                            <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                               <codes xsi:type="ToList">
+                                                                  <operand name="R43.0" xsi:type="CodeRef"/>
+                                                               </codes>
+                                                            </operand>
+                                                         </operand>
+                                                      </operand>
+                                                      <operand xsi:type="Union">
+                                                         <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                            <codes xsi:type="ToList">
+                                                               <operand name="R43.2" xsi:type="CodeRef"/>
+                                                            </codes>
+                                                         </operand>
+                                                         <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                            <codes xsi:type="ToList">
+                                                               <operand name="R07.1" xsi:type="CodeRef"/>
+                                                            </codes>
+                                                         </operand>
+                                                      </operand>
+                                                   </operand>
+                                                   <operand xsi:type="Union">
+                                                      <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                         <codes xsi:type="ToList">
+                                                            <operand name="R68.83" xsi:type="CodeRef"/>
+                                                         </codes>
+                                                      </operand>
+                                                      <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                         <codes xsi:type="ToList">
+                                                            <operand name="840546002" xsi:type="CodeRef"/>
+                                                         </codes>
+                                                      </operand>
+                                                   </operand>
+                                                </operand>
+                                                <operand xsi:type="Union">
+                                                   <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                      <codes xsi:type="ToList">
+                                                         <operand name="103001002" xsi:type="CodeRef"/>
+                                                      </codes>
+                                                   </operand>
+                                                   <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                      <codes xsi:type="ToList">
+                                                         <operand name="11833005" xsi:type="CodeRef"/>
+                                                      </codes>
+                                                   </operand>
+                                                </operand>
+                                             </operand>
+                                             <operand xsi:type="Union">
+                                                <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                   <codes xsi:type="ToList">
+                                                      <operand name="267036007" xsi:type="CodeRef"/>
+                                                   </codes>
+                                                </operand>
+                                                <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                   <codes xsi:type="ToList">
+                                                      <operand name="28743005" xsi:type="CodeRef"/>
+                                                   </codes>
+                                                </operand>
+                                             </operand>
+                                          </operand>
+                                          <operand xsi:type="Union">
+                                             <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="36955009" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                             <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                                <codes xsi:type="ToList">
+                                                   <operand name="426000000" xsi:type="CodeRef"/>
+                                                </codes>
+                                             </operand>
+                                          </operand>
+                                       </operand>
+                                       <operand xsi:type="Union">
+                                          <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                             <codes xsi:type="ToList">
+                                                <operand name="44169009" xsi:type="CodeRef"/>
+                                             </codes>
+                                          </operand>
+                                          <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                             <codes xsi:type="ToList">
+                                                <operand name="49727002" xsi:type="CodeRef"/>
+                                             </codes>
+                                          </operand>
+                                       </operand>
+                                    </operand>
+                                    <operand xsi:type="Union">
+                                       <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                          <codes xsi:type="ToList">
+                                             <operand name="135883003" xsi:type="CodeRef"/>
+                                          </codes>
+                                       </operand>
+                                       <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                          <codes xsi:type="ToList">
+                                             <operand name="161855003" xsi:type="CodeRef"/>
+                                          </codes>
+                                       </operand>
+                                    </operand>
+                                 </operand>
+                                 <operand xsi:type="Union">
+                                    <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                       <codes xsi:type="ToList">
+                                          <operand name="161939006" xsi:type="CodeRef"/>
+                                       </codes>
+                                    </operand>
+                                    <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                       <codes xsi:type="ToList">
+                                          <operand name="161940008" xsi:type="CodeRef"/>
+                                       </codes>
+                                    </operand>
+                                 </operand>
+                              </operand>
+                              <operand xsi:type="Union">
+                                 <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                    <codes xsi:type="ToList">
+                                       <operand name="161941007" xsi:type="CodeRef"/>
+                                    </codes>
+                                 </operand>
+                                 <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                    <codes xsi:type="ToList">
+                                       <operand name="2237002" xsi:type="CodeRef"/>
+                                    </codes>
+                                 </operand>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="Union">
+                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                 <codes xsi:type="ToList">
+                                    <operand name="23141003" xsi:type="CodeRef"/>
+                                 </codes>
+                              </operand>
+                              <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                                 <codes xsi:type="ToList">
+                                    <operand name="247410004" xsi:type="CodeRef"/>
+                                 </codes>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Union">
+                           <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                              <codes xsi:type="ToList">
+                                 <operand name="274640006" xsi:type="CodeRef"/>
+                              </codes>
+                           </operand>
+                           <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                              <codes xsi:type="ToList">
+                                 <operand name="274664007" xsi:type="CodeRef"/>
+                              </codes>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Union">
+                        <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                           <codes xsi:type="ToList">
+                              <operand name="284523002" xsi:type="CodeRef"/>
+                           </codes>
+                        </operand>
+                        <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                           <codes xsi:type="ToList">
+                              <operand name="386661006" xsi:type="CodeRef"/>
+                           </codes>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand xsi:type="Union">
+                     <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                        <codes xsi:type="ToList">
+                           <operand name="409702008" xsi:type="CodeRef"/>
+                        </codes>
+                     </operand>
+                     <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                        <codes xsi:type="ToList">
+                           <operand name="426976009" xsi:type="CodeRef"/>
+                        </codes>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="43724002" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+                  <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="60845006" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </operand>
+            </operand>
+            <operand dataType="fhir:Condition" templateId="condition-qicore-qicore-condition" codeProperty="code" xsi:type="Retrieve">
+               <codes xsi:type="ToList">
+                  <operand name="75483001" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has N3C Lab Tests" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="Query">
+               <source alias="lab">
+                  <expression name="N3C Lab Tests Concept Union" xsi:type="ExpressionRef"/>
+               </source>
+               <where xsi:type="SameOrAfter">
+                  <operand path="issued" scope="lab" xsi:type="Property"/>
+                  <operand xsi:type="ToDateTime">
+                     <operand name="IndexDate" xsi:type="ParameterRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has N3C Procedures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="Query">
+               <source alias="proc">
+                  <expression name="N3C Procedure Code Union" xsi:type="ExpressionRef"/>
+               </source>
+               <where xsi:type="SameOrAfter">
+                  <operand path="performedDateTime" scope="proc" xsi:type="Property"/>
+                  <operand xsi:type="ToDateTime">
+                     <operand name="IndexDate" xsi:type="ParameterRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has N3C Strong Positive Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="Query">
+               <source alias="strong">
+                  <expression name="N3C Strong Postive Condition Code Union" xsi:type="ExpressionRef"/>
+               </source>
+               <where xsi:type="SameOrAfter">
+                  <operand path="onsetDateTime" scope="strong" xsi:type="Property"/>
+                  <operand xsi:type="ToDateTime">
+                     <operand name="IndexDate" xsi:type="ParameterRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has N3C Weak Positive Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="Query">
+               <source alias="weak">
+                  <expression name="N3C Weak Positive Condition Code Union" xsi:type="ExpressionRef"/>
+               </source>
+               <where xsi:type="SameOrAfter">
+                  <operand path="onsetDateTime" scope="weak" xsi:type="Property"/>
+                  <operand xsi:type="ToDateTime">
+                     <operand name="IndexDate" xsi:type="ParameterRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Inpatient Encounters With Weak Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression dataType="fhir:Encounter" templateId="encounter-qicore-qicore-encounter" codeProperty="type" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand name="Inpatient Encounter" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+            </source>
+            <relationship alias="C" xsi:type="With">
+               <expression name="N3C Weak Positive Condition Code Union" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="Equal">
+                  <operand path="id" scope="E" xsi:type="Property"/>
+                  <operand asType="t:String" xsi:type="As">
+                     <operand path="encounter" scope="C" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Outpatient Encounters With Weak Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression dataType="fhir:Encounter" templateId="encounter-qicore-qicore-encounter" codeProperty="type" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand name="Outpatient Encounter" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+            </source>
+            <relationship alias="C" xsi:type="With">
+               <expression name="N3C Weak Positive Condition Code Union" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="Equal">
+                  <operand path="id" scope="E" xsi:type="Property"/>
+                  <operand asType="t:String" xsi:type="As">
+                     <operand path="encounter" scope="C" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Encounter Criteria With Weak Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="ToList">
+               <operand xsi:type="Or">
+                  <operand xsi:type="GreaterOrEqual">
+                     <operand xsi:type="Count">
+                        <source name="Inpatient Encounters With Weak Condition" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand valueType="t:Integer" value="2" xsi:type="Literal"/>
+                  </operand>
+                  <operand xsi:type="GreaterOrEqual">
+                     <operand xsi:type="Count">
+                        <source name="Outpatient Encounters With Weak Condition" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand valueType="t:Integer" value="2" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="N3C Cohort Cases" context="Patient" accessLevel="Public">
+         <expression xsi:type="Or">
+            <operand xsi:type="Or">
+               <operand xsi:type="Or">
+                  <operand name="Has N3C Lab Tests" xsi:type="ExpressionRef"/>
+                  <operand name="Has N3C Procedures" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand name="Has N3C Strong Positive Condition" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand xsi:type="And">
+               <operand name="Has N3C Weak Positive Condition" xsi:type="ExpressionRef"/>
+               <operand name="Encounter Criteria With Weak Condition" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
