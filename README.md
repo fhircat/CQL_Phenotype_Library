@@ -1,4 +1,4 @@
-# CQL_Phenotype_Library
+# CQL Phenotype Library
 A library of phenotype definitions using clinical quality language
 
 
