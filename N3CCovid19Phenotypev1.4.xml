@@ -12,7 +12,11 @@
    </usings>
    <parameters>
       <def name="IndexDate" accessLevel="Public">
-         <parameterTypeSpecifier name="t:Date" xsi:type="NamedTypeSpecifier"/>
+         <default xsi:type="Date">
+            <year valueType="t:Integer" value="2020" xsi:type="Literal"/>
+            <month valueType="t:Integer" value="1" xsi:type="Literal"/>
+            <day valueType="t:Integer" value="1" xsi:type="Literal"/>
+         </default>
       </def>
    </parameters>
    <codeSystems>

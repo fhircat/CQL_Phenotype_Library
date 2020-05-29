@@ -159,7 +159,7 @@ code	"75483001"	:	'75483001'	from	"SNOMEDCT"	display	'75483001'
 
 
 
-parameter IndexDate Date
+parameter IndexDate default @2020-01-01
 
 
 define "N3C Lab Tests Concept Union":
