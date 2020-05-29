@@ -1,0 +1,28 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX fhir: <http://hl7.org/fhir/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT (COUNT(distinct ?patient) AS ?count) where {
+
+?condition a fhir:Condition .
+    ?condition fhir:Condition.subject [fhir:link ?patient ;].
+    ?condition fhir:Condition.code [
+        fhir:CodeableConcept.coding [
+        fhir:index ?index;
+        fhir:Coding.code [fhir:value ?codingCode] ;
+        fhir:Coding.system [fhir:value ?codingSystem] ;
+        fhir:Coding.display [fhir:value ?codingDisplay];
+        ]
+    ].
+    
+     FILTER (?codingSystem = "http://snomed.info/sct" && 
+     ?codingCode in ("840539006",
+					"840544004"))
+
+    ?condition fhir:Condition.onsetDateTime [
+    	fhir:value ?onsetDateTime 
+    ] .
+    
+    FILTER (YEAR(?onsetDateTime) >=2020 && 
+        MONTH(?onsetDateTime) >= 1 &&
+        DAY(?onsetDateTime) >=1)       
+}

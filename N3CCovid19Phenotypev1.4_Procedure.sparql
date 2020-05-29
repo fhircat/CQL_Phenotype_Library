@@ -1,0 +1,34 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX fhir: <http://hl7.org/fhir/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT (COUNT(distinct ?patient) AS ?count) where {
+
+    ?procedure a fhir:Procedure .
+    ?procedure fhir:Procedure.subject [fhir:link ?patient ;].
+    ##?procedure fhir:Procedure.encounter [fhir:link ?encounter ;].
+    ?procedure fhir:Procedure.code [
+        fhir:CodeableConcept.coding [
+        fhir:index ?pindex;
+        fhir:Coding.code [fhir:value ?pcodingCode] ;
+        fhir:Coding.system [fhir:value ?pcodingSystem] ;
+        fhir:Coding.display [fhir:value ?pcodingDisplay];
+        ]
+    ].   
+     FILTER ((?pcodingSystem = "http://www.ama-assn.org/go/cpt" && 
+     ?pcodingCode in ("87635",
+                     "86318",
+					 "86328",
+					"86769")) ||
+			(?pcodingSystem = "https://www.cms.gov/Medicare/Coding/HCPCS" && 
+     		?pcodingCode in ("U0001",
+							"U0002"))					
+			)					
+    ?procedure fhir:Procedure.performedPeriod [
+        fhir:Period.start [fhir:value ?pstart; ];
+        fhir:Period.end   [fhir:value ?pend; ] ;
+    ] .
+    
+    FILTER (YEAR(?pstart) >=2020 && 
+        MONTH(?pstart) >= 1 &&
+        DAY(?pstart) >=1)    
+}
